@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="codesearchr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+    
+    <link rel="stylesheet" type="text/css" href="http://necolas.github.com/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/styles/style.css" rel="stylesheet">
+    
+    <script src="http://underscorejs.org/underscore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.js"></script>
+    <script src="/static/js/components.js"></script>
+    <script src="/static/js/controllers.js"></script>
+    <script src="/static/js/app.js"></script>
+  </head>
+  
+  <body ng-controller="MainCtrl">
+    
+    <br>
+    <br>
+    <h1>CodeSearchr</h1>
+    <h6>Get right to code samples!</h6>
+    <br>
+
+    <form class="form-horizontal" ng-submit="search(searchTerm)">
+      <div class="input-append">
+        <input type="text" id="appendedInputButton" class="span8" ng-model="searchTerm" placeholder="Ex: python class inheritance">
+        <button class="btn" type="button" ng-click="search(searchTerm)">Search</button>
+        <span ng-show="searching">
+          <loading label="'Loading'" interval="500"></loading>
+        </span>
+      </div>
+    </form>
+
+    <table>
+      <tr ng-repeat="r in results" style="margin-bottom: 60px">
+        <td>
+          <div ng-show="r.html.title">
+            <h3 style="display: inline">{{r.html.title}}</h3>
+            <span class="label clickable" ng-click="open(r)">view original</span> 
+          </div>
+          <br>
+          <div id="{{results.indexOf(r)}}" class="well"></div>
+          <br>
+        </td>
+      </tr>
+    </table>
+   
+  </body>
+</html>

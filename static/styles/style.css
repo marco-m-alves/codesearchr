@@ -1,0 +1,8 @@
+body { width: 960px; margin: 0 auto; font-family: sans-serif; }
+
+body, p, a, ul, ol, li { font-size: small;}
+
+pre { background-color: wheat;}
+
+.clickable { cursor: pointer;}
+.clickable:hover { color: orange;}
